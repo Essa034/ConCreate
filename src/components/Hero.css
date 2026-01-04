@@ -28,7 +28,7 @@
 }
 
 .hero-canvas {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -78,44 +78,44 @@
 @keyframes glitch {
   0% {
     text-shadow: 
-      0.05em 0 0 rgba(255, 128, 0, 0.75),
-      -0.05em -0.025em 0 rgba(0, 128, 255, 0.75),
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
       0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
   14% {
     text-shadow: 
-      0.05em 0 0 rgba(255, 128, 0, 0.75),
-      -0.05em -0.025em 0 rgba(0, 128, 255, 0.75),
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
       0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
   15% {
     text-shadow: 
-      -0.05em -0.025em 0 rgba(255, 128, 0, 0.75),
-      0.025em 0.025em 0 rgba(0, 128, 255, 0.75),
-      -0.05em -0.05em 0 rgba(128, 0, 128, 0.75);
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
+      0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
   49% {
     text-shadow: 
-      -0.05em -0.025em 0 rgba(255, 128, 0, 0.75),
-      0.025em 0.025em 0 rgba(0, 128, 255, 0.75),
-      -0.05em -0.05em 0 rgba(128, 0, 128, 0.75);
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
+      0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
   50% {
     text-shadow: 
-      0.025em 0.05em 0 rgba(255, 128, 0, 0.75),
-      0.05em 0 0 rgba(0, 128, 255, 0.75),
-      0 -0.05em 0 rgba(128, 0, 128, 0.75);
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
+      0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
   99% {
     text-shadow: 
-      0.025em 0.05em 0 rgba(255, 128, 0, 0.75),
-      0.05em 0 0 rgba(0, 128, 255, 0.75),
-      0 -0.05em 0 rgba(128, 0, 128, 0.75);
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
+      0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
   100% {
     text-shadow: 
-      0.05em 0 0 rgba(255, 128, 0, 0.75),
-      -0.05em -0.025em 0 rgba(0, 128, 255, 0.75),
+      0.05em 0 0 rgb(255, 255, 255),
+      -0.05em -0.025em 0 rgba(128, 0, 128, 0.75),
       0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
   }
 }
@@ -135,14 +135,14 @@
   animation: glitch-effect 3s infinite linear alternate-reverse;
   clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
   transform: translate(-0.04em, -0.03em);
-  color: #ff5100;
+  color: #f7f3f2;
 }
 
 .hero-content h1::after {
   animation: glitch-effect 2s infinite linear alternate-reverse;
   clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
   transform: translate(0.04em, 0.03em);
-  color: #0080ff;
+  color: #f1f3f6;
 }
 
 @keyframes glitch-effect {
