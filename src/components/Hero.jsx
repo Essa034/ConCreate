@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
-import aboutImg from "../assets/about.jpeg";
+import logo from "../assets/logo.png";
 import "./Hero.css";
 
 function Hero() {
@@ -11,74 +12,94 @@ function Hero() {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    const img = new Image();
-    img.src = aboutImg;
 
-    const offscreenCanvas = document.createElement("canvas");
-    const offscreenCtx = offscreenCanvas.getContext("2d");
-
-    img.onload = () => {
+    const setSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      offscreenCanvas.width = window.innerWidth;
-      offscreenCanvas.height = window.innerHeight;
-      offscreenCtx.drawImage(
-        img,
-        0,
-        0,
-        offscreenCanvas.width,
-        offscreenCanvas.height
-      );
+      drawBaseGrid();
     };
 
-    const handleMouseMove = (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      const areaSize = 200;
+    const gridSize = 120; // large cubes
+    const baseAlpha = 0.08; // faint overlay
+    let baseGridCanvas = document.createElement("canvas");
+    let baseGridCtx = baseGridCanvas.getContext("2d");
+    let clearHighlightId = null;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(offscreenCanvas, 0, 0);
+    const drawBaseGrid = () => {
+      baseGridCanvas.width = canvas.width;
+      baseGridCanvas.height = canvas.height;
+      baseGridCtx.clearRect(0, 0, baseGridCanvas.width, baseGridCanvas.height);
 
-      const left = Math.max(0, x - areaSize / 2);
-      const top = Math.max(0, y - areaSize / 2);
-      const width = Math.min(areaSize, window.innerWidth - left);
-      const height = Math.min(areaSize, window.innerHeight - top);
-
-      const imageData = offscreenCtx.getImageData(left, top, width, height);
-      const data = imageData.data;
-
-      for (let i = 0; i < height; i++) {
-        for (let j = 0; j < width; j++) {
-          if (Math.random() < 0.05) {
-            let r = 0, g = 0, b = 0, a = 0, count = 0;
-            for (let di = -1; di <= 1; di++) {
-              for (let dj = -1; dj <= 1; dj++) {
-                const ni = i + di;
-                const nj = j + dj;
-                if (ni >= 0 && ni < height && nj >= 0 && nj < width) {
-                  const idx = (ni * width + nj) * 4;
-                  r += data[idx];
-                  g += data[idx + 1];
-                  b += data[idx + 2];
-                  a += data[idx + 3];
-                  count++;
-                }
-              }
-            }
-            const idx = (i * width + j) * 4;
-            data[idx] = r / count;
-            data[idx + 1] = g / count;
-            data[idx + 2] = b / count;
-            data[idx + 3] = a / count;
-          }
+      for (let y = 0; y < baseGridCanvas.height; y += gridSize) {
+        for (let x = 0; x < baseGridCanvas.width; x += gridSize) {
+          baseGridCtx.fillStyle = `rgba(255, 255, 255, ${baseAlpha})`;
+          baseGridCtx.fillRect(x, y, gridSize - 1, gridSize - 1);
         }
       }
-
-      ctx.putImageData(imageData, left, top);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const drawScene = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(baseGridCanvas, 0, 0);
+    };
+
+    const drawProximityHighlights = (mouseX, mouseY) => {
+      // Draw base first
+      drawScene();
+
+      const threshold = 24; // px distance where highlight is visible
+      const range = gridSize * 2; // highlight a local area around cursor
+
+      // Nearest grid lines
+      const nearestV = Math.round(mouseX / gridSize) * gridSize;
+      const nearestH = Math.round(mouseY / gridSize) * gridSize;
+
+      const drawVertical = (xLine) => {
+        const dx = Math.abs(mouseX - xLine);
+        if (dx > threshold) return;
+        const alpha = (1 - dx / threshold) * 0.9; // stronger near the line; higher to show through overlay
+        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(xLine + 0.5, Math.max(0, mouseY - range));
+        ctx.lineTo(xLine + 0.5, Math.min(canvas.height, mouseY + range));
+        ctx.stroke();
+      };
+
+      const drawHorizontal = (yLine) => {
+        const dy = Math.abs(mouseY - yLine);
+        if (dy > threshold) return;
+        const alpha = (1 - dy / threshold) * 0.9;
+        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(Math.max(0, mouseX - range), yLine + 0.5);
+        ctx.lineTo(Math.min(canvas.width, mouseX + range), yLine + 0.5);
+        ctx.stroke();
+      };
+
+      // Draw nearest lines and neighbors for a subtle cross highlight
+      [nearestV - gridSize, nearestV, nearestV + gridSize].forEach(drawVertical);
+      [nearestH - gridSize, nearestH, nearestH + gridSize].forEach(drawHorizontal);
+    };
+
+    const onMove = (e) => {
+      drawProximityHighlights(e.clientX, e.clientY);
+      if (clearHighlightId) clearTimeout(clearHighlightId);
+      clearHighlightId = setTimeout(() => {
+        drawScene(); // back to just the faint grid
+      }, 180);
+    };
+
+    window.addEventListener("resize", setSize);
+    window.addEventListener("mousemove", onMove);
+    setSize();
+
+    return () => {
+      window.removeEventListener("resize", setSize);
+      window.removeEventListener("mousemove", onMove);
+      if (clearHighlightId) clearTimeout(clearHighlightId);
+    };
   }, []);
 
   const text = "ConCreate";
@@ -101,7 +122,19 @@ function Hero() {
   };
 
   return (
-    <div className="hero">
+    <div className="hero" id="home">
+      <header className="hero-header">
+        <div className="header-left">
+          <img src={logo} alt="ConCreate logo" className="logo-img" />
+        </div>
+        <nav className="header-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+          </ul>
+        </nav>
+      </header>
       <canvas ref={canvasRef} className="hero-canvas" />
       <div className="overlay" />
 
@@ -114,7 +147,11 @@ function Hero() {
           animate="visible"
         >
           {text.split("").map((char, index) => (
-            <motion.span key={index} variants={letter}>
+            <motion.span 
+              key={index} 
+              variants={letter}
+              className={index === 0 || index === 3 ? 'big-c' : ''}
+            >
               {char}
             </motion.span>
           ))}
@@ -134,15 +171,7 @@ function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Started
-          </motion.button>
-
-          <motion.button
-            className="secondary-btn"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Learn More
+            Register Now
           </motion.button>
         </div>
       </div>

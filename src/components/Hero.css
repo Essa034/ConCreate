@@ -33,8 +33,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .overlay {
@@ -44,6 +45,66 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Top header with logo and page tags */
+.hero-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+  pointer-events: auto;
+  transform: translateY(-60px);
+}
+
+.header-left .logo {
+  font-family: '04b_30', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 210px;
+  height: auto;
+  display: block;
+  margin-left: -35px;
+}
+
+
+.header-nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(20, 19, 19, 0.35);
+  border-radius: 999px;
+  background: rgba(122, 61, 118, 0.18);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  font-size: 1.05rem;
+}
+
+.header-nav a:hover {
+  background: rgba(100, 40, 81, 0.2);
 }
 
 .hero-content {
@@ -51,7 +112,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 4;
   max-width: 800px;
   width: 90%;
   color: white;
@@ -66,13 +127,29 @@
   font-weight: bold;
   font-family: '04b_30', Arial, sans-serif;
   position: relative;
-  color: #fff;
+  color: #ffffff;
   letter-spacing: 1px;
-  animation: glitch 5s infinite;
-  text-shadow: 
-    0.05em 0 0 rgba(255, 128, 0, 0.75),
-    -0.05em -0.025em 0 rgba(0, 128, 255, 0.75),
-    0.025em 0.05em 0 rgba(128, 0, 128, 0.75);
+  overflow: hidden;
+  border-right: 0.15em solid white;
+  white-space: nowrap;
+  animation: typing 3.5s steps(9, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s 5 forwards;
+  width: 0;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+.hero-content h1 .big-c {
+  font-size: 1.3em;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 @keyframes glitch {
@@ -120,31 +197,6 @@
   }
 }
 
-.hero-content h1::before,
-.hero-content h1::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-}
-
-.hero-content h1::before {
-  animation: glitch-effect 3s infinite linear alternate-reverse;
-  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  transform: translate(-0.04em, -0.03em);
-  color: #f7f3f2;
-}
-
-.hero-content h1::after {
-  animation: glitch-effect 2s infinite linear alternate-reverse;
-  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-  transform: translate(0.04em, 0.03em);
-  color: #f1f3f6;
-}
-
 @keyframes glitch-effect {
   0% {
     transform: translate(0);
@@ -183,32 +235,40 @@
 }
 
 .primary-btn, .secondary-btn {
-  padding: 12px 24px;
+  position: relative;
+  padding: 14px 28px;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
 
+/* Construction brick-like primary button */
 .primary-btn {
-  background: #007bff;
-  color: white;
+  color: #fff;
+  background: #72326e; /* light violet */
+  border: 2px solid #4a2b5f;;
+  border-bottom-width: 8px; /* depth */
+  border-right-width: 2px;
+  border-left-width: 2px;
+  box-shadow: 0 10px 18px rgba(120, 69, 140, 0.28);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
+/* Removed stripey/studded top cap from the button */
 
 .primary-btn:hover {
-  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(120, 69, 140, 0.34);
 }
 
-.secondary-btn {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-.secondary-btn:hover {
-  background: white;
-  color: #007bff;
+.primary-btn:active {
+  transform: translateY(2px);
+  border-bottom-width: 4px;
+  box-shadow: 0 6px 12px rgba(120, 69, 140, 0.25);
 }
 
 @media (max-width: 768px) {

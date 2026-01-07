@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import './Timer.css';
 
 const Timer = () => {
-  // Target date for the event (adjust as needed)
-  const eventDate = new Date('2025-02-15T00:00:00').getTime();
+  // Target date for the event (January 16, 2026)
+  const eventDate = new Date('2026-01-16T00:00:00').getTime();
   
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -30,13 +30,20 @@ const Timer = () => {
     const back = element.querySelector('.flip-back');
     
     if (front && back) {
-      front.textContent = newValue;
-      back.textContent = newValue;
+      const prev = prevTimeLeft.current[key];
+      const oldDisplay = key === 'days' ? String(prev) : String(prev).padStart(2, '0');
+      const newDisplay = key === 'days' ? String(newValue) : String(newValue).padStart(2, '0');
+
+      // Show previous value on the front, next value on the back
+      front.textContent = oldDisplay;
+      back.textContent = newDisplay;
       element.classList.add('flipping');
       
       // After animation completes, remove the class
       setTimeout(() => {
         element.classList.remove('flipping');
+        // Set front to the new value after flip completes
+        front.textContent = newDisplay;
       }, 600);
     }
   };
@@ -57,13 +64,13 @@ const Timer = () => {
         animateFlip('days', days);
       }
       if (hours !== prevTimeLeft.current.hours) {
-        animateFlip('hours', hours.toString().padStart(2, '0'));
+        animateFlip('hours', hours);
       }
       if (minutes !== prevTimeLeft.current.minutes) {
-        animateFlip('minutes', minutes.toString().padStart(2, '0'));
+        animateFlip('minutes', minutes);
       }
       if (seconds !== prevTimeLeft.current.seconds) {
-        animateFlip('seconds', seconds.toString().padStart(2, '0'));
+        animateFlip('seconds', seconds);
       }
       
       prevTimeLeft.current = { days, hours, minutes, seconds };
@@ -76,7 +83,7 @@ const Timer = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [eventDate]);
 
   // Render flip card for each time unit
   const renderFlipCard = (value, label, key) => {

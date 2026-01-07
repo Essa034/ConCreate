@@ -39,8 +39,7 @@
 .timer-header {
   font-family: '04b_30', monospace;
   font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 0 #78458c, -2px -2px 0 #78458c, 2px -2px 0 #78458c, -2px 2px 0 #78458c;
+  color: #4a2b5f;
   letter-spacing: 2px;
   margin: 0;
   text-align: center;
@@ -74,7 +73,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: bottom center;
+  transform-origin: center center; /* flip from the middle */
 }
 
 .flip-front,
