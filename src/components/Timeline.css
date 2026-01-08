@@ -77,6 +77,45 @@
   overflow: hidden;
 }
 
+/* Lighten timeline overlays and container on small screens to reveal background */
+@media (max-width: 768px) {
+  .timeline-section .overlay {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .timeline-container {
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .timeline-container::before {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.9) 40%,
+      rgba(183, 107, 216, 0.12) 70%,
+      rgba(120, 69, 140, 0.25) 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-section .overlay {
+    background: rgba(0, 0, 0, 0.16);
+  }
+
+  .timeline-container {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .timeline-container::before {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.86) 40%,
+      rgba(183, 107, 216, 0.1) 70%,
+      rgba(120, 69, 140, 0.2) 100%
+    );
+  }
+}
+
 .timeline-path {
   position: absolute;
   left: 50%;
@@ -482,4 +521,13 @@
   background-size: 20px 20px;
   opacity: 0.5;
   z-index: 0;
+}
+
+/* Show the entire Timeline background on small screens */
+@media (max-width: 768px) {
+  .timeline-section {
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }

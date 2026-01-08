@@ -213,3 +213,41 @@
     font-size: 0.85rem;
   }
 }
+
+/* Show the entire About background on small screens */
+@media (max-width: 768px) {
+  .about {
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Lighten About overlays/cards on small screens so the background shows */
+@media (max-width: 768px) {
+  .about::before {
+    background: rgba(0, 0, 0, 0.16);
+  }
+
+  .about__intro {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .about__card {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .about::before {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .about__intro {
+    background: rgba(255, 255, 255, 0.65);
+  }
+
+  .about__card {
+    background: rgba(255, 255, 255, 0.65);
+  }
+}

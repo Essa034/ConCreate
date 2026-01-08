@@ -235,3 +235,33 @@
     margin-bottom: 0;
   }
 }
+
+/* Show the entire Events background on small screens */
+@media (max-width: 768px) {
+  .events {
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Lighten Events overlay/cards on small screens so the background shows */
+@media (max-width: 768px) {
+  .events::before {
+    background: rgba(0, 0, 0, 0.16);
+  }
+
+  .events__card {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .events::before {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .events__card {
+    background: rgba(255, 255, 255, 0.65);
+  }
+}

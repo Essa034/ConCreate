@@ -346,3 +346,25 @@
     width: 120px;
   }
 }
+
+/* Show the entire hero image on small screens (avoid crop) */
+@media (max-width: 768px) {
+  .hero {
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Lighten hero overlay on small screens so background shows through */
+@media (max-width: 768px) {
+  .hero .overlay {
+    background: rgba(0, 0, 0, 0.18);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .overlay {
+    background: rgba(0, 0, 0, 0.14);
+  }
+}
