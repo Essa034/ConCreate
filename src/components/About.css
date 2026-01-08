@@ -1,4 +1,215 @@
-.next-section {
+.about {
+  position: relative;
+  padding: 6rem 1.5rem 7rem;
+  background: url("../assets/about.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  color: #f5ecff;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* removed overlay to keep the background fully visible */
+
+.about__container {
   position: relative;
   z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.about__intro {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(120, 69, 140, 0.18);
+  box-shadow: 0 12px 34px rgba(120, 69, 140, 0.18);
+  border-radius: 18px;
+  padding: 2rem 2.25rem;
+}
+
+.about__eyebrow {
+  font-family: '04b_30', monospace;
+  letter-spacing: 1px;
+  color: #c6a7ff;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.about__title {
+  margin: 0 0 1rem;
+  font-size: 2.3rem;
+  font-family: '04b_30', monospace;
+  letter-spacing: 1px;
+  color: #4a2b5f;
+}
+
+.about__lede {
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #4a2b5f;
+  font-family: 'PREMIER 2019', Arial, sans-serif;
+}
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.85rem;
+}
+
+.about__stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  text-align: left;
+}
+
+.about__stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f7e1ff;
+  font-family: '04b_30', monospace;
+}
+
+.about__stat-label {
+  margin: 0.15rem 0 0;
+  color: #c7bddb;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.about__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.about__card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(120, 69, 140, 0.18);
+  border-radius: 16px;
+  padding: 1.5rem;
+  overflow: hidden;
+  min-height: 170px;
+  box-shadow: 0 12px 34px rgba(120, 69, 140, 0.18);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* remove extra overlay highlight to keep cards clean */
+
+.about__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198, 167, 255, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.about__card h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+  font-family: '04b_30', monospace;
+  letter-spacing: 0.5px;
+  color: #4a2b5f;
+}
+
+.about__card p {
+  margin: 0;
+  color: #4a2b5f;
+  line-height: 1.6;
+  font-size: 0.98rem;
+  font-family: 'PREMIER 2019', Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about__intro {
+    padding: 1.5rem;
+  }
+
+  .about__lede {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .about__cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about__card {
+    padding: 1.25rem;
+    min-height: auto;
+  }
+
+  .about__card h3 {
+    font-size: 1.1rem;
+  }
+
+  .about__card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 2.5rem 0.75rem 3rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .about__intro {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+
+  .about__lede {
+    font-size: 0.88rem;
+  }
+
+  .about__card {
+    padding: 1rem;
+  }
+
+  .about__card h3 {
+    font-size: 1rem;
+  }
+
+  .about__card p {
+    font-size: 0.85rem;
+  }
 }

@@ -45,7 +45,35 @@
   text-align: center;
   text-transform: uppercase;
   padding: 0.5rem 1.5rem;
-  
+}
+
+@media (max-width: 768px) {
+  .timer-white-band {
+    padding: 0.6rem 1rem;
+    max-width: 90%;
+  }
+
+  .timer-header {
+    font-size: 1.4rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .timer-container {
+    margin-top: -4rem;
+    margin-bottom: -2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-header {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .timer-white-band {
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 .timer-box {

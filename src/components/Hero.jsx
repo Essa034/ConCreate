@@ -166,13 +166,16 @@ function Hero() {
         </motion.p>
 
         <div className="hero-buttons">
-          <motion.button
+          <motion.a
+            href="https://forms.gle/QTzQfF9JxDdRtbuC9"
+            target="_blank"
+            rel="noopener noreferrer"
             className="primary-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Register Now
-          </motion.button>
+          </motion.a>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import Hero from "./components/Hero"
 import About from "./components/About"
 import Timer from "./components/Timer"
 import Timeline from "./components/Timeline"
+import Events from "./components/Events"
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Timer />
       <Timeline />
+      <Events />
       <About />
     </>
   )
