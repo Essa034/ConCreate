@@ -59,8 +59,9 @@
   }
 
   .timer-container {
-    margin-top: -4rem;
-    margin-bottom: -2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+    z-index: 4;
   }
 }
 
@@ -73,6 +74,11 @@
 
   .timer-white-band {
     padding: 0.5rem 0.75rem;
+  }
+
+  .timer-container {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -257,3 +263,19 @@
   border-radius: 8px;
   pointer-events: none;
 }
+@media (max-width: 768px) {
+  .timer-container {
+    background-color: #f9f5ff; /* same as timeline bg */
+    background-image: url("../assets/counter.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+     isolation: isolate;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding: 1.5rem 0;
+  }
+}
+
+

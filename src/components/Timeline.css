@@ -91,16 +91,18 @@
     background: radial-gradient(
       ellipse at center,
       rgba(255, 255, 255, 0.9) 40%,
-      rgba(183, 107, 216, 0.12) 70%,
+      rgba(162, 8, 228, 0.12) 70%,
       rgba(120, 69, 140, 0.25) 100%
     );
   }
 }
 
 @media (max-width: 480px) {
-  .timeline-section .overlay {
-    background: rgba(0, 0, 0, 0.16);
+    .day-card,
+  .event-card {
+    background: rgba(255, 255, 255, 0.95);
   }
+
 
   .timeline-container {
     background: rgba(255, 255, 255, 0.9);
@@ -110,7 +112,7 @@
     background: radial-gradient(
       ellipse at center,
       rgba(255, 255, 255, 0.86) 40%,
-      rgba(183, 107, 216, 0.1) 70%,
+      rgba(110, 55, 133, 0.1) 70%,
       rgba(120, 69, 140, 0.2) 100%
     );
   }
@@ -261,6 +263,7 @@
   .timeline-section {
     padding: 3rem 1rem 4rem;
     padding-top: 8rem;
+    margin-top: 0;
   }
 
   .section-title {
@@ -308,6 +311,7 @@
   .timeline-section {
     padding: 2.5rem 0.75rem 3rem;
     padding-top: 6rem;
+    margin-top: 0;
   }
 
   .section-title {

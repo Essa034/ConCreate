@@ -7,9 +7,11 @@ const days = [
     label: 'Day 1 — Jan 16',
     events: [
       { title: 'Inauguration' },
-      { title: 'Survey Competition & Sustainable Design Competition' },
+      { title: 'Level x & Hive Mind Challenge' },
       { title: 'Bridge Making & CS Event' },
-      { title: '12-hour Ideathon' },
+      {title:'Treasure Hunt'},
+      {title:'Astra Night'},
+      { title: 'Creovate' },
       { title: 'Civil Expo' },
       { title: 'Informal Event and Dinner' },
     ],
@@ -18,7 +20,7 @@ const days = [
     id: 'day2',
     label: 'Day 2 — Jan 17',
     events: [
-      { title: 'Premium Workshop' },
+      { title: 'Ideathon Presentation' },
       { title: 'Prize Distribution' },
     ],
   },

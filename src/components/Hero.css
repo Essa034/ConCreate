@@ -245,6 +245,14 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
 
+.cta-note {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  color: #ffffff;
+  font-family: 'PREMIER 2019', Arial, sans-serif;
+}
+
 /* Construction brick-like primary button */
 .primary-btn {
   color: #fff;

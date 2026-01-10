@@ -167,7 +167,7 @@ function Hero() {
 
         <div className="hero-buttons">
           <motion.a
-            href="https://forms.gle/QTzQfF9JxDdRtbuC9"
+            href="https://forms.gle/hvjCGmGstpTUpd2S8"
             target="_blank"
             rel="noopener noreferrer"
             className="primary-btn"
@@ -177,6 +177,15 @@ function Hero() {
             Register Now
           </motion.a>
         </div>
+
+        <motion.p
+          className="cta-note"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2, duration: 0.8 }}
+        >
+          Free Tshirts and other goodies 
+        </motion.p>
       </div>
     </div>
   );

@@ -18,11 +18,10 @@ const events = [
   ],
   [
     {
-      title: "12 Hour Ideathon",
+      title: "Creovate",
       time: "Jan 16, 10:00 PM – Jan 17, 10:00 AM",
       body:
-        "A 12-Hour Ideathon on a particular theme, where student teams come together for an overnight innovation sprint packed with ideas, creativity, and problem-solving. Participants will tackle real-world challenges affecting Indian infrastructure and brainstorm smart, practical solutions that can make systems stronger and safer. With mentors to guide them and the clock ticking through the night, teams will shape bold ideas into impactful concepts and pitch them to judges, making the event an exciting mix of innovation, teamwork, and all-night energy. Stay awake with us from January 16th 10PM to January 17th 10AM!",
-    },
+"Theme will be provided at the venue; participants must choose any topic under the theme. No topics outside the theme are allowed. Teams of 3–5 members; no swapping of members is permitted. Open to all students from any department and year. Ideathon runs 9:00 PM – 9:00 AM. All submissions and presentations must be completed within this time; no extra time will be given. Evaluation based on depth of analysis, clarity, feasibility, and practical implementation. Ideas must be sustainable, feasible, and implementable. Judges decisions are final. Participants must collaborate actively and use time efficiently."    },
     {
       title: "Treasure Hunt",
       time: "Jan 16, 5:00 PM",
@@ -32,11 +31,19 @@ const events = [
   ],
   [
     {
-      title: "Hive Mind Challenge (Sustainable)",
-      time: "Date/Time TBA",
-      body:
-        "Hive Mind Challenge is where big ideas meet green thinking! This sustainability powered event brings creative minds together to brainstorm, design, and pitch bold, eco-friendly solutions that can shape a better future. From smart materials to build-ready concepts, participants turn imagination into impact through teamwork, innovation, and collective problem-solving. Fast-paced, idea-driven, and full of fresh perspectives, Hive Mind Challenge celebrates collaboration, creativity, and the power of thinking sustainably - together.",
-    },
+      title: "Hive Mind Challenge",
+  body: "• Three-hour competition.\n" +
+        "• Design problem will be provided at the start of the competition.\n" +
+        "• The team of 3 or 4 members will have the next 2 hours and 45 minutes to prepare a PowerPoint presentation.\n" +
+        "• The key points to be included in the design will be discussed at the time of the competition.\n" +
+        "• The last 15 minutes are allotted for the presentation of the prepared design.\n" +
+        "• The presentation should consist of a maximum of five slides.\n" +
+        "• There will be a viva voce based on the proposed design.\n" +
+        "• Evaluation will be based on sustainability and environmental impact of the solution.\n" +
+        "• Feasibility and practical implementation of the design will be assessed.\n" +
+        "• Quality of presentation and communication skills will be evaluated.\n" +
+        "• Confidence and clarity during the viva voce will be considered."
+}
   ],
 ]
 
@@ -53,7 +60,7 @@ function Events() {
 
 	return (
 		<section className="events" id="events">
-			<h2 className="section-title">Events</h2>
+			<h2 className="section-title">Events Guidelines</h2>
 
 			<div className="events__viewport">
 				<button className="events__nav events__nav--left" onClick={() => scrollByCard(-1)} aria-label="Previous events">

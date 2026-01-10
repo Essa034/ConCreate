@@ -21,18 +21,18 @@ function About() {
         <div className="about__intro">
           
           <p className="about__lede">
-            The Indian Concrete Institute (ICI) is a premier professional body dedicated to advancing
-            concrete technology in civil engineering. It brings together engineers, academicians,
-            researchers, and industry leaders to drive innovation and excellence in construction. ICI
-            promotes the exchange of technical knowledge through seminars, workshops, publications, and
-            professional programs while helping bridge academic learning with real-world engineering
-            practice. With a focus on quality, durability, and sustainability, ICI nurtures skill
-            development, ethics, and leadership—building stronger minds behind stronger structures.
+            CONCREATE ’26, organized by ASCE MACE,ICI MACE and BAI is a dynamic two-day technical fest that blends innovation, creativity, and pure excitement. Taking place on 16th & 17th January, CONCREATE brings together curious minds and passionate builders for a series of thrilling challenges.
+
+
           </p>
           <p className="about__lede">
-            ASCE is where dreams learn the language of steel and stone—where ideas rise gently into
-            bridges, roads, and cities. It ignites bold thinking and turns it into iconic structures,
-            fostering young minds, building leaders, and shaping the future of our built world.
+            From brainstorming bold ideas at the Ideathon and tackling real-world problems in the Sustainable Design Challenge, to racing through clues in the Treasure Hunt, testing teamwork in Bridge Making, and outsmarting opponents in Capture the Flag, there’s something for everyone.
+          </p>
+          <p className="about__lede">
+            Whether you’re here to compete, collaborate, or simply enjoy the vibe, CONCREATE ’26 promises energy, learning, fun, and memories that last.
+          </p>
+          <p className="about__lede">
+            Outthink. Outbuild. Outlast. 
           </p>
         </div>
 
