@@ -163,6 +163,7 @@
 }
 
 .day-card {
+  position: relative;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -170,6 +171,28 @@
   box-shadow: 0 12px 34px rgba(120, 69, 140, 0.18);
   border-radius: 18px;
   padding: 2rem;
+  overflow: hidden;
+}
+
+.day-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(120, 69, 140, 0.05) 85%,
+    rgba(120, 69, 140, 0.12) 100%
+  );
+  pointer-events: none;
+  border-radius: 18px;
+  z-index: 0;
+}
+
+.day-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .connector {
@@ -254,9 +277,30 @@
   font-size: 1.15rem;
 }
 
+.day-item-title.clickable:hover {
+  color: #78458c;
+  text-decoration: none;
+}
+
+.day-item-title.clickable:hover {
+  color: #78458c;
+  text-decoration-color: rgba(120, 69, 140, 0.6);
+}
+
 .day-item-desc {
   color: #666;
   font-size: 1.05rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  margin-top: 0;
+}
+
+.day-item-desc.expanded {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.75rem;
 }
 
 @media (max-width: 900px) {
