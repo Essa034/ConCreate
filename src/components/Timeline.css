@@ -295,10 +295,12 @@
   opacity: 0;
   transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
   margin-top: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .day-item-desc.expanded {
-  max-height: 200px;
+  max-height: 300px;
   opacity: 1;
   margin-top: 0.75rem;
 }
